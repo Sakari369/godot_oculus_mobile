@@ -292,6 +292,12 @@ void OvrMobileSession::check_for_vrapi_events() const {
 				// No more pending events.
 				return;
 
+			// Explicit cases for unhandled events to prevent compiler warning.
+			case VRAPI_EVENT_DATA_LOST:
+			case VRAPI_EVENT_VISIBILITY_GAINED:
+			case VRAPI_EVENT_VISIBILITY_LOST:
+			case VRAPI_EVENT_DISPLAY_REFRESH_RATE_CHANGE:
+
 			default:
 				break;
 		}
@@ -325,9 +331,6 @@ bool OvrMobileSession::enter_vr_mode() {
 
 		// Set the tracking transform to use, by default this is eye level.
 		vrapi_SetTrackingSpace(ovr, ovrTrackingSpace::VRAPI_TRACKING_SPACE_LOCAL_FLOOR);
-
-		vrapi_SetPropertyInt(&java, VRAPI_REORIENT_HMD_ON_CONTROLLER_RECENTER,
-				VRAPI_TRUE);
 
 		// Update the eye fovs.
 		const ovrTracking2 current_tracking = vrapi_GetPredictedTracking2(ovr, 0.0);
