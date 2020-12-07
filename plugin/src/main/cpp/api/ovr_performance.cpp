@@ -29,11 +29,7 @@ namespace ovrmobile {
             if (foveation_available == VRAPI_TRUE) {
                 // Validate the foveation level.
                 bool foveation_valid = false;
-                if (ovrmobile::is_oculus_go_device(ovr_java)) {
-                    // Foveation level for the Oculus Go ranges from 0 to 3
-                    // See https://developer.oculus.com/documentation/mobilesdk/latest/concepts/mobile-ffr/
-                    foveation_valid = foveation_level >= 0 && foveation_level <= 3;
-                } else if (ovrmobile::is_oculus_quest_device(ovr_java)) {
+                if (ovrmobile::is_oculus_quest_device(ovr_java)) {
                     // Foveation level for the Oculus Quest ranges from 0 to 4
                     // See // - Oculus Quest: https://developer.oculus.com/documentation/quest/latest/concepts/mobile-ffr/
                     foveation_valid = foveation_level >= 0 && foveation_level <= 4;

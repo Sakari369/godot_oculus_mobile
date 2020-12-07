@@ -79,9 +79,7 @@ GDCALLINGCONV godot_variant set_enable_dynamic_foveation(godot_object *p_instanc
 				// Retrieve if set enable or disable
 				bool enable_dynamic_foveation = godot::api->godot_variant_as_bool(p_args[0]);
 				bool dynamic_foveation_valid = false;
-				if (ovrmobile::is_oculus_go_device(ovr_java)) {
-					dynamic_foveation_valid = false;
-				} else if (ovrmobile::is_oculus_quest_device(ovr_java)) {
+				if (ovrmobile::is_oculus_quest_device(ovr_java)) {
 					dynamic_foveation_valid = true;
 				}
 
